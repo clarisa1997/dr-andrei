@@ -106,9 +106,29 @@ body {
   margin: 0;
 }
 
+.intro .instruction {
+  margin-bottom: 12px;
+}
+
+.reaction-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reaction-buttons button {
+  width: 100%;
+}
+
 .prank-card,
-.gift-card {
+.gift-card,
+.bridge-card {
   gap: 16px;
+}
+
+.bridge-card h2 {
+  margin: 0;
+  font-size: 1.9rem;
 }
 
 .prank-header,

@@ -1,5 +1,6 @@
 const views = {
   intro: document.getElementById("view-intro"),
+  bridge: document.getElementById("view-bridge"),
   prank: document.getElementById("view-prank"),
   gift: document.getElementById("view-gift")
 };
@@ -17,6 +18,10 @@ function switchView(target) {
 }
 
 function revealGift() {
+  switchView("bridge");
+}
+
+function showPrank() {
   switchView("prank");
 }
 

@@ -24,14 +24,32 @@
       <div class="card intro">
         <p class="eyebrow">Reveal</p>
         <h1>Apri il regalo e scopri il piano</h1>
-        <p>
-          C'è una sorpresa di laurea blindata qui dentro. Premi il pulsante e ti mostro cosa ho organizzato per te.
+        <p class="instruction">
+          Ti chiederei cortesemente di aprire il regalo che ti si prospetta davanti e poi premere uno dei bottoni qui
+          sotto per farmi sapere come ti fa sentire.
         </p>
-        <button class="primary" onclick="revealGift()">Apri</button>
+        <div class="reaction-buttons">
+          <button class="primary" onclick="revealGift()">Ho fatto e mi fa impazzire</button>
+          <button class="primary" onclick="revealGift()">Ho fatto e lo trovo adorabile</button>
+          <button class="primary" onclick="revealGift()">Ho fatto e devo dire mi è abbastanza indifferente</button>
+        </div>
       </div>
     </section>
 
-    <section id="view-prank" class="view">
+    <section id="view-bridge" class="view hidden">
+      <div class="card bridge-card">
+        <p class="eyebrow">Cambio di programma</p>
+        <h2>Ok, cambiamo argomento: la Formula 1 non c'entra niente.</h2>
+        <p>
+          Come sanno tutti qui, hai un'altra passione irrefrenabile, uno sport che condividi con tuo fratello piccolo e
+          che vi ha sempre legati. Tranquillo, non ce lo siamo dimenticati.
+        </p>
+        <p>Quando sei pronto, clicca qui sotto per vedere il vero protagonista di questa laurea.</p>
+        <button class="primary" onclick="showPrank()">Mostra il regalo</button>
+      </div>
+    </section>
+
+    <section id="view-prank" class="view hidden">
       <div class="card prank-card">
         <div class="prank-header">
           <img src="assets/logo-milan.png" alt="Logo AC Milan" />
@@ -56,7 +74,7 @@
       </div>
     </section>
 
-    <section id="view-gift" class="view">
+    <section id="view-gift" class="view hidden">
       <div class="card gift-card">
         <div class="gift-header">
           <img src="assets/logo.png" alt="Logo Juventus" />
