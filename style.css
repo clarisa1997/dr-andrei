@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  max-width: 500px;
+  padding: 20px;
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.subtitle {
+  color: #ccc;
+}
+
+.card {
+  background: white;
+  color: black;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.hidden {
+  display: none;
+}
+
+.date-picker {
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+.confirmation {
+  margin-top: 15px;
+  color: #0f0;
+}

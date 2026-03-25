@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Un regalo per te ⚽</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <img src="assets/logo.png" alt="Juventus" class="logo" />
+
+    <h1>Ho un regalo per te 🎁</h1>
+    <p class="subtitle">Preparati... perché si va a Torino!</p>
+
+    <div class="card">
+      <h2>Allianz Stadium Tour + Museo</h2>
+      <p>
+        Un'esperienza unica dentro la casa della Juventus ⚫⚪
+      </p>
+    </div>
+
+    <div class="reveal">
+      <button onclick="revealGift()">Scopri il regalo</button>
+    </div>
+
+    <div id="gift" class="hidden">
+      <h2>🎉 Sorpresa! 🎉</h2>
+      <p>Hai ricevuto un biglietto per il tour dello stadio e museo!</p>
+
+      <div class="date-picker">
+        <label>Scegli quando vuoi andare:</label>
+        <input type="date" id="date" />
+        <button onclick="submitDate()">Conferma</button>
+      </div>
+
+      <p id="confirmation" class="confirmation"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
