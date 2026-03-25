@@ -20,12 +20,13 @@
   <div id="confetti"></div>
   <div id="secret-overlay" class="secret-overlay" aria-live="polite" aria-hidden="true">
     <div class="secret-content">
-      <p class="eyebrow">Inside joke mode</p>
-      <h3>Codice “Arriviamo quando parte l'inno” attivato 🔐</h3>
+      <p class="eyebrow">Modalità scherzo</p>
+      <h3>Codice Allianz pronto da svelare</h3>
       <p class="lead">
-        Solo chi ha sopportato i tuoi minuti di recupero eterni può sbloccare questa sorpresa.
+        Premi continua per aprire il regalo e stop agli indizi fake.
       </p>
-      <p class="secret-note">Fai un respiro, si va negli spogliatoi VIP...</p>
+      <p class="secret-note">Spoiler: niente San Siro, solo Juve.</p>
+      <button id="overlay-continue" class="primary large">Fammi vedere</button>
     </div>
   </div>
 
@@ -34,7 +35,7 @@
       <p class="eyebrow">Graduation reveal</p>
       <h1>Apri il tuo regalo segreto</h1>
       <p class="lead">
-        C'è un biglietto pronto con il tuo nome, ma prima devi sbloccarlo. Premi il pulsante e lascia fare alla magia.
+        Ci sono due biglietti VIP pronti col tuo nome: sblocca il regalo e decidi tu chi portare allo Stadium.
       </p>
       <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
     </section>
@@ -45,12 +46,13 @@
           <span class="eyebrow">Per il neo dottore Andrei ✨</span>
           <h1>Torino ti aspetta per un tour esclusivo all'Allianz Stadium</h1>
           <p class="lead">
-            Dal campo al museo bianconero: preparati a vivere ogni corridoio, spogliatoio e storia della Vecchia Signora.
+            Dal campo al museo bianconero: vivi ogni corridoio e spogliatoio con due pass VIP da gestire come preferisci.
           </p>
           <ul class="highlights">
             <li>Accesso backstage + museo ufficiale</li>
             <li>Gift pack personalizzato il giorno del tour</li>
             <li>Sessione foto sul manto verde</li>
+            <li>Due ticket per portare chi preferisci</li>
           </ul>
           <div class="actions">
             <button class="primary" onclick="revealGift()">Scopri il regalo</button>
@@ -76,16 +78,23 @@
       <section class="panel prank glass-card">
         <div>
           <p class="eyebrow">Mini troll</p>
-          <h2>Per un attimo pensavi a San Siro, vero?</h2>
+          <h2>San Siro? Macché.</h2>
           <p>
-            Lo so, ci sono ancora i messaggi che ti prendono in giro con un “ti porto all’Inter Village”. In realtà
-            stiamo solo scaldando i motori per la casa della Vecchia Signora.
+            I meme sull’Inter erano solo depistaggi: destinazione confermata, Allianz Stadium.
           </p>
+          <div class="stadium-switch">
+            <span class="fake">San Siro</span>
+            <span class="arrow">⇢</span>
+            <span class="real">Allianz Stadium</span>
+          </div>
         </div>
-        <div class="stadium-switch">
-          <span class="fake">San Siro</span>
-          <span class="arrow">⇢</span>
-          <span class="real">Allianz Stadium</span>
+        <div class="prank-ticket">
+          <img src="assets/logo-milan.png" alt="Logo AC Milan" class="prank-logo" />
+          <div class="prank-copy">
+            <p class="label">Ingresso VIP</p>
+            <p class="title">San Siro Tour</p>
+            <p class="note">*scherzo, si vola a Torino</p>
+          </div>
         </div>
       </section>
 
@@ -117,8 +126,8 @@
       <section class="panel surprise glass-card">
         <div class="surprise-text">
           <p class="eyebrow">Momento wow</p>
-          <h2>Ready, set, rivelazione!</h2>
-          <p>Premi il pulsante e lascia partire i cori dagli spalti 🍾</p>
+          <h2>È il momento di svelare tutto</h2>
+          <p>Premi il pulsante e scopri cosa ti aspetta.</p>
         </div>
         <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
       </section>
@@ -127,13 +136,12 @@
         <div class="gift-header">
           <h2>🎉 Sorpresa! 🎉</h2>
           <p class="lead">
-            Biglietto VIP per il tour dello Juventus Stadium + ingresso museo. Indossa il sorriso più grande e
-            preparati a brillare!
+            Due biglietti VIP per il tour dello Juventus Stadium + ingresso museo. Scegli tu chi portare, il resto è già organizzato.
           </p>
         </div>
 
         <div class="date-picker">
-          <label for="date">Segna la tua data preferita e ci pensiamo noi:</label>
+          <label for="date">Segna quando vuoi andare e troverai tutto pronto:</label>
           <div class="date-actions">
             <input type="date" id="date" />
             <button class="primary" onclick="submitDate()">Conferma</button>
@@ -142,8 +150,7 @@
         </div>
 
         <blockquote class="quote">
-          “La Juve non è solo una squadra, è uno stile di vita. Non vedo l'ora di viverlo con te.” — Il tuo partner in
-          crime ⚫⚪
+          “Hai due posti. Il primo è tuo, il secondo lo decidi tu.”
         </blockquote>
       </section>
     </div>

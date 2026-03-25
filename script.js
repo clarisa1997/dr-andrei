@@ -4,8 +4,10 @@ const introSection = document.getElementById("intro");
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
 const secretOverlay = document.getElementById("secret-overlay");
+const overlayContinue = document.getElementById("overlay-continue");
 const confettiColors = ["#f9d265", "#ff8f3f", "#ffffff", "#d1ecff"];
 let isRevealing = false;
+let audioCtx;
 
 if (giftSection && !giftSection.classList.contains("hidden")) {
   giftSection.classList.add("hidden");
@@ -41,7 +43,7 @@ function submitDate() {
     day: "numeric"
   });
 
-  confirmation.innerText = `Perfetto! Blocco il ${formatted} solo per noi ⚽`;
+  confirmation.innerText = `Perfetto! Il ${formatted} è tuo: due biglietti VIP pronti per te e chi vuoi ⚽`;
   confirmation.classList.add("success");
   launchConfetti(15);
 }
@@ -55,15 +57,22 @@ function runSecretOverlay() {
   isRevealing = true;
   secretOverlay.setAttribute("aria-hidden", "false");
   requestAnimationFrame(() => secretOverlay.classList.add("visible"));
+}
 
+if (overlayContinue && secretOverlay) {
+  overlayContinue.addEventListener("click", () => {
+    if (!secretOverlay.classList.contains("visible")) return;
+    completeSecretOverlay();
+  });
+}
+
+function completeSecretOverlay() {
+  secretOverlay.classList.remove("visible");
   setTimeout(() => {
-    secretOverlay.classList.remove("visible");
-    setTimeout(() => {
-      secretOverlay.setAttribute("aria-hidden", "true");
-      showGiftSection();
-      isRevealing = false;
-    }, 350);
-  }, 1700);
+    secretOverlay.setAttribute("aria-hidden", "true");
+    showGiftSection();
+    isRevealing = false;
+  }, 350);
 }
 
 function showGiftSection() {
@@ -77,6 +86,7 @@ function showGiftSection() {
   giftSection.classList.remove("hidden");
   requestAnimationFrame(() => giftSection.classList.add("revealed"));
   launchConfetti();
+  playFanfare();
   setTimeout(() => {
     giftSection.scrollIntoView({ behavior: "smooth", block: "center" });
   }, 400);
@@ -94,4 +104,40 @@ function launchConfetti(amount = 40) {
     confettiContainer.appendChild(piece);
     setTimeout(() => piece.remove(), 2800 + delay * 1000);
   }
+}
+
+function ensureAudioContext() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  if (audioCtx.state === "suspended") {
+    audioCtx.resume();
+  }
+}
+
+function playFanfare() {
+  ensureAudioContext();
+  if (!audioCtx) return;
+
+  const sequence = [
+    { semitone: 0, duration: 0.3 },
+    { semitone: 4, duration: 0.25 },
+    { semitone: 7, duration: 0.45 },
+    { semitone: 12, duration: 0.5 }
+  ];
+
+  let time = audioCtx.currentTime;
+  sequence.forEach(({ semitone, duration }, idx) => {
+    const oscillator = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    oscillator.type = idx % 2 === 0 ? "sawtooth" : "triangle";
+    oscillator.frequency.value = 440 * Math.pow(2, semitone / 12);
+    gain.gain.setValueAtTime(0.0001, time);
+    gain.gain.exponentialRampToValueAtTime(0.5, time + 0.05);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + duration);
+    oscillator.connect(gain).connect(audioCtx.destination);
+    oscillator.start(time);
+    oscillator.stop(time + duration);
+    time += duration * 0.7;
+  });
 }
