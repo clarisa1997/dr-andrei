@@ -6,7 +6,9 @@ const views = {
 };
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
+const heartsContainer = document.getElementById("hearts");
 const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
+const heartColors = ["#ffffff", "#000000"];
 let audioCtx;
 
 function switchView(target) {
@@ -23,11 +25,12 @@ function revealGift() {
 
 function showPrank() {
   switchView("prank");
+  launchConfetti(35);
 }
 
 function unveilRealGift() {
   switchView("gift");
-  launchConfetti();
+  launchHearts();
   playFanfare();
 }
 
@@ -50,7 +53,7 @@ function submitDate() {
 
   confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
   confirmation.classList.add("success");
-  launchConfetti(15);
+  launchHearts(12);
 }
 
 function launchConfetti(amount = 40) {
@@ -64,6 +67,20 @@ function launchConfetti(amount = 40) {
     piece.style.transform = `translateY(-10vh) rotate(${Math.random() * 360}deg)`;
     confettiContainer.appendChild(piece);
     setTimeout(() => piece.remove(), 2800 + delay * 1000);
+  }
+}
+
+function launchHearts(amount = 30) {
+  if (!heartsContainer) return;
+  for (let i = 0; i < amount; i++) {
+    const heart = document.createElement("span");
+    const delay = Math.random() * 0.5;
+    heart.className = "heart";
+    heart.style.left = `${Math.random() * 100}%`;
+    heart.style.background = heartColors[Math.floor(Math.random() * heartColors.length)];
+    heart.style.animationDelay = `${delay}s`;
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), 3500 + delay * 1000);
   }
 }
 

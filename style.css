@@ -65,6 +65,14 @@ body {
   z-index: 5;
 }
 
+#hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  overflow: hidden;
+}
+
 .page {
   width: 100%;
   height: 100vh;
@@ -150,13 +158,20 @@ body {
 }
 
 .gift-card {
-  background: var(--juve-grad);
-  border-color: rgba(255, 226, 139, 0.45);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.95));
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 .gift-card::before {
-  background: radial-gradient(circle at 80% 5%, rgba(247, 201, 69, 0.35), transparent 60%);
-  opacity: 0.5;
+  background: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.08) 6px,
+      transparent 6px,
+      transparent 14px
+    ),
+    radial-gradient(circle at 80% 5%, rgba(247, 247, 247, 0.25), transparent 60%);
+  opacity: 0.32;
 }
 
 .prank-header,
@@ -171,8 +186,8 @@ body {
   width: 70px;
   height: 70px;
   border-radius: 18px;
-  object-fit: cover;
-  background: #fff;
+  object-fit: contain;
+  background: #ffffff;
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
 }
 
@@ -184,11 +199,12 @@ body {
 .gift-card h2 {
   margin: 0;
   font-size: 2.35rem;
+  color: #ffffff;
 }
 
-.prank-card p,
 .gift-card p {
   margin: 0;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .prank-list {
@@ -303,6 +319,31 @@ button:hover {
   animation: confetti-fall 2.6s linear forwards;
 }
 
+.heart {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+  animation: heart-fall 3.2s linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: inherit;
+  top: -7px;
+  left: 0;
+}
+
+.heart::after {
+  top: 0;
+  left: -7px;
+}
+
 @keyframes confetti-fall {
   0% {
     transform: translateY(-10vh) rotate(0deg);
@@ -313,6 +354,20 @@ button:hover {
   }
   100% {
     transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes heart-fall {
+  0% {
+    transform: translateY(-10vh) rotate(45deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(110vh) rotate(45deg) scale(1.2);
     opacity: 0;
   }
 }
