@@ -325,6 +325,7 @@ button:hover {
   height: 14px;
   transform: rotate(45deg);
   animation: heart-fall 3.2s linear forwards;
+  pointer-events: none;
 }
 
 .heart::before,

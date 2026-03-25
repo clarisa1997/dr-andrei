@@ -10,6 +10,7 @@ const heartsContainer = document.getElementById("hearts");
 const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
 const heartColors = ["#ffffff", "#000000"];
 let audioCtx;
+let heartsUnlocked = false;
 
 function switchView(target) {
   Object.values(views).forEach((view) => view.classList.remove("active"));
@@ -30,7 +31,8 @@ function showPrank() {
 
 function unveilRealGift() {
   switchView("gift");
-  launchHearts();
+  heartsUnlocked = true;
+  launchHearts(40);
   playFanfare();
 }
 
@@ -53,7 +55,7 @@ function submitDate() {
 
   confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
   confirmation.classList.add("success");
-  launchHearts(12);
+  launchHearts(20);
 }
 
 function launchConfetti(amount = 40) {
@@ -83,6 +85,12 @@ function launchHearts(amount = 30) {
     setTimeout(() => heart.remove(), 3500 + delay * 1000);
   }
 }
+
+document.addEventListener("click", () => {
+  if (heartsUnlocked) {
+    launchHearts(8);
+  }
+});
 
 function ensureAudioContext() {
   if (!audioCtx) {
