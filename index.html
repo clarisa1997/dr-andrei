@@ -18,7 +18,7 @@
   <div class="glow glow-left"></div>
   <div class="glow glow-right"></div>
   <div id="confetti"></div>
-  <div id="secret-overlay" class="secret-overlay hidden" aria-live="polite">
+  <div id="secret-overlay" class="secret-overlay" aria-live="polite" aria-hidden="true">
     <div class="secret-content">
       <p class="eyebrow">Inside joke mode</p>
       <h3>Codice “Arriviamo quando parte l'inno” attivato 🔐</h3>
@@ -30,96 +30,123 @@
   </div>
 
   <main class="page">
-    <header class="hero glass-card">
-      <div class="hero-text">
-        <span class="eyebrow">Per il neo dottore Andrei ✨</span>
-        <h1>Torino ti aspetta per un tour esclusivo all'Allianz Stadium</h1>
-        <p class="lead">
-          Dal campo al museo bianconero: preparati a vivere ogni corridoio, spogliatoio e storia della Vecchia Signora.
-        </p>
-        <ul class="highlights">
-          <li>Accesso backstage + museo ufficiale</li>
-          <li>Gift pack personalizzato il giorno del tour</li>
-          <li>Sessione foto sul manto verde</li>
-        </ul>
-        <div class="actions">
-          <button class="primary" onclick="revealGift()">Scopri il regalo</button>
-          <button class="ghost" onclick="document.getElementById('date').scrollIntoView({ behavior: 'smooth' });">
-            Scegli la data
-          </button>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="ticket">
-          <img src="assets/logo.png" alt="Logo Juventus" />
-          <div>
-            <span class="ticket-label">Esperienza</span>
-            <p class="ticket-title">Allianz Stadium Tour</p>
-            <p class="ticket-subtitle">+ Museo Juventus</p>
-          </div>
-          <span class="ticket-year">2024</span>
-        </div>
-        <div class="badge">Special Edition</div>
-      </div>
-    </header>
-
-    <section class="panel discovery glass-card">
-      <div>
-        <p class="eyebrow">Preview</p>
-        <h2>Un percorso immersivo per celebrare la tua laurea</h2>
-        <p>
-          Dai tunnel dello stadio al museo interattivo: un viaggio tra trofei, cimeli e la passione bianconera. Ogni
-          momento è stato pensato per renderti protagonista assoluto.
-        </p>
-      </div>
-      <div class="timeline">
-        <div class="timeline-step">
-          <span>1</span>
-          <p>Benvenuto VIP &amp; accesso ai backstage.</p>
-        </div>
-        <div class="timeline-step">
-          <span>2</span>
-          <p>Tour guidato completo + museo interattivo.</p>
-        </div>
-        <div class="timeline-step">
-          <span>3</span>
-          <p>Celebration toast e foto in campo.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel surprise glass-card">
-      <div class="surprise-text">
-        <p class="eyebrow">Momento wow</p>
-        <h2>Ready, set, rivelazione!</h2>
-        <p>Premi il pulsante e lascia partire i cori dagli spalti 🍾</p>
-      </div>
+    <section id="intro" class="intro glass-card">
+      <p class="eyebrow">Graduation reveal</p>
+      <h1>Apri il tuo regalo segreto</h1>
+      <p class="lead">
+        C'è un biglietto pronto con il tuo nome, ma prima devi sbloccarlo. Premi il pulsante e lascia fare alla magia.
+      </p>
       <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
     </section>
 
-    <section id="gift" class="panel gift glass-card hidden">
-      <div class="gift-header">
-        <h2>🎉 Sorpresa! 🎉</h2>
-        <p class="lead">
-          Biglietto VIP per il tour dello Juventus Stadium + ingresso museo. Indossa il sorriso più grande e
-          preparati a brillare!
-        </p>
-      </div>
-
-      <div class="date-picker">
-        <label for="date">Segna la tua data preferita e ci pensiamo noi:</label>
-        <div class="date-actions">
-          <input type="date" id="date" />
-          <button class="primary" onclick="submitDate()">Conferma</button>
+    <div id="experience" class="experience hidden">
+      <header class="hero glass-card">
+        <div class="hero-text">
+          <span class="eyebrow">Per il neo dottore Andrei ✨</span>
+          <h1>Torino ti aspetta per un tour esclusivo all'Allianz Stadium</h1>
+          <p class="lead">
+            Dal campo al museo bianconero: preparati a vivere ogni corridoio, spogliatoio e storia della Vecchia Signora.
+          </p>
+          <ul class="highlights">
+            <li>Accesso backstage + museo ufficiale</li>
+            <li>Gift pack personalizzato il giorno del tour</li>
+            <li>Sessione foto sul manto verde</li>
+          </ul>
+          <div class="actions">
+            <button class="primary" onclick="revealGift()">Scopri il regalo</button>
+            <button class="ghost" onclick="document.getElementById('date').scrollIntoView({ behavior: 'smooth' });">
+              Scegli la data
+            </button>
+          </div>
         </div>
-        <p id="confirmation" class="confirmation"></p>
-      </div>
+        <div class="hero-visual">
+          <div class="ticket">
+            <img src="assets/logo.png" alt="Logo Juventus" />
+            <div>
+              <span class="ticket-label">Esperienza</span>
+              <p class="ticket-title">Allianz Stadium Tour</p>
+              <p class="ticket-subtitle">+ Museo Juventus</p>
+            </div>
+            <span class="ticket-year">2024</span>
+          </div>
+          <div class="badge">Special Edition</div>
+        </div>
+      </header>
 
-      <blockquote class="quote">
-        “La Juve non è solo una squadra, è uno stile di vita. Non vedo l'ora di viverlo con te.” — Il tuo partner in
-        crime ⚫⚪
-      </blockquote>
-    </section>
+      <section class="panel prank glass-card">
+        <div>
+          <p class="eyebrow">Mini troll</p>
+          <h2>Per un attimo pensavi a San Siro, vero?</h2>
+          <p>
+            Lo so, ci sono ancora i messaggi che ti prendono in giro con un “ti porto all’Inter Village”. In realtà
+            stiamo solo scaldando i motori per la casa della Vecchia Signora.
+          </p>
+        </div>
+        <div class="stadium-switch">
+          <span class="fake">San Siro</span>
+          <span class="arrow">⇢</span>
+          <span class="real">Allianz Stadium</span>
+        </div>
+      </section>
+
+      <section class="panel discovery glass-card">
+        <div>
+          <p class="eyebrow">Preview</p>
+          <h2>Un percorso immersivo per celebrare la tua laurea</h2>
+          <p>
+            Dai tunnel dello stadio al museo interattivo: un viaggio tra trofei, cimeli e la passione bianconera. Ogni
+            momento è pensato per farti sentire protagonista assoluto.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-step">
+            <span>1</span>
+            <p>Benvenuto VIP &amp; accesso ai backstage.</p>
+          </div>
+          <div class="timeline-step">
+            <span>2</span>
+            <p>Tour guidato completo + museo interattivo.</p>
+          </div>
+          <div class="timeline-step">
+            <span>3</span>
+            <p>Celebration toast e foto in campo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel surprise glass-card">
+        <div class="surprise-text">
+          <p class="eyebrow">Momento wow</p>
+          <h2>Ready, set, rivelazione!</h2>
+          <p>Premi il pulsante e lascia partire i cori dagli spalti 🍾</p>
+        </div>
+        <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
+      </section>
+
+      <section id="gift" class="panel gift glass-card hidden">
+        <div class="gift-header">
+          <h2>🎉 Sorpresa! 🎉</h2>
+          <p class="lead">
+            Biglietto VIP per il tour dello Juventus Stadium + ingresso museo. Indossa il sorriso più grande e
+            preparati a brillare!
+          </p>
+        </div>
+
+        <div class="date-picker">
+          <label for="date">Segna la tua data preferita e ci pensiamo noi:</label>
+          <div class="date-actions">
+            <input type="date" id="date" />
+            <button class="primary" onclick="submitDate()">Conferma</button>
+          </div>
+          <p id="confirmation" class="confirmation"></p>
+        </div>
+
+        <blockquote class="quote">
+          “La Juve non è solo una squadra, è uno stile di vita. Non vedo l'ora di viverlo con te.” — Il tuo partner in
+          crime ⚫⚪
+        </blockquote>
+      </section>
+    </div>
   </main>
 
   <script src="script.js"></script>

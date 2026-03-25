@@ -76,6 +76,38 @@ body {
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.35);
 }
 
+.intro {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+  padding: 60px 32px;
+}
+
+.intro h1 {
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  margin: 0;
+}
+
+.intro .lead {
+  max-width: 520px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.experience.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
@@ -236,6 +268,39 @@ button.large {
   gap: 20px;
 }
 
+.prank {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.stadium-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.stadium-switch .fake {
+  text-decoration: line-through;
+  color: #ff8d8d;
+}
+
+.stadium-switch .real {
+  color: var(--accent);
+}
+
+.stadium-switch .arrow {
+  font-size: 1.4rem;
+  opacity: 0.7;
+}
+
 .discovery {
   gap: 32px;
 }
@@ -336,7 +401,7 @@ input[type="date"]:focus {
   display: none;
 }
 
-#secret-overlay {
+.secret-overlay {
   position: fixed;
   inset: 0;
   display: flex;
@@ -346,11 +411,15 @@ input[type="date"]:focus {
   backdrop-filter: blur(12px);
   z-index: 9;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 
-#secret-overlay.visible {
+.secret-overlay.visible {
   opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .secret-content {
@@ -447,6 +516,10 @@ input[type="date"]:focus {
     grid-template-columns: 1fr;
   }
   .surprise {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .prank {
     flex-direction: column;
     align-items: flex-start;
   }

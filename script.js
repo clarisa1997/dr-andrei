@@ -1,9 +1,19 @@
 const giftSection = document.getElementById("gift");
+const experienceBlock = document.getElementById("experience");
+const introSection = document.getElementById("intro");
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
 const secretOverlay = document.getElementById("secret-overlay");
 const confettiColors = ["#f9d265", "#ff8f3f", "#ffffff", "#d1ecff"];
 let isRevealing = false;
+
+if (giftSection && !giftSection.classList.contains("hidden")) {
+  giftSection.classList.add("hidden");
+}
+
+if (experienceBlock && !experienceBlock.classList.contains("hidden")) {
+  experienceBlock.classList.add("hidden");
+}
 
 function revealGift() {
   if (giftSection.classList.contains("hidden") && !isRevealing) {
@@ -43,13 +53,13 @@ function runSecretOverlay() {
   }
 
   isRevealing = true;
-  secretOverlay.classList.remove("hidden");
+  secretOverlay.setAttribute("aria-hidden", "false");
   requestAnimationFrame(() => secretOverlay.classList.add("visible"));
 
   setTimeout(() => {
     secretOverlay.classList.remove("visible");
     setTimeout(() => {
-      secretOverlay.classList.add("hidden");
+      secretOverlay.setAttribute("aria-hidden", "true");
       showGiftSection();
       isRevealing = false;
     }, 350);
@@ -57,6 +67,13 @@ function runSecretOverlay() {
 }
 
 function showGiftSection() {
+  if (introSection) {
+    introSection.classList.add("hidden");
+  }
+  if (experienceBlock) {
+    experienceBlock.classList.remove("hidden");
+    requestAnimationFrame(() => experienceBlock.classList.add("revealed"));
+  }
   giftSection.classList.remove("hidden");
   requestAnimationFrame(() => giftSection.classList.add("revealed"));
   launchConfetti();
