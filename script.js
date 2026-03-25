@@ -1,29 +1,29 @@
-const giftSection = document.getElementById("gift");
-const experienceBlock = document.getElementById("experience");
-const introSection = document.getElementById("intro");
+const views = {
+  intro: document.getElementById("view-intro"),
+  prank: document.getElementById("view-prank"),
+  gift: document.getElementById("view-gift")
+};
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
-const secretOverlay = document.getElementById("secret-overlay");
-const overlayContinue = document.getElementById("overlay-continue");
-const confettiColors = ["#f9d265", "#ff8f3f", "#ffffff", "#d1ecff"];
-let isRevealing = false;
+const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
 let audioCtx;
 
-if (giftSection && !giftSection.classList.contains("hidden")) {
-  giftSection.classList.add("hidden");
-}
-
-if (experienceBlock && !experienceBlock.classList.contains("hidden")) {
-  experienceBlock.classList.add("hidden");
+function switchView(target) {
+  Object.values(views).forEach((view) => view.classList.remove("active"));
+  const section = views[target];
+  if (section) {
+    section.classList.add("active");
+  }
 }
 
 function revealGift() {
-  if (giftSection.classList.contains("hidden") && !isRevealing) {
-    runSecretOverlay();
-  } else {
-    launchConfetti(20);
-    giftSection.classList.add("revealed");
-  }
+  switchView("prank");
+}
+
+function unveilRealGift() {
+  switchView("gift");
+  launchConfetti();
+  playFanfare();
 }
 
 function submitDate() {
@@ -31,7 +31,7 @@ function submitDate() {
   confirmation.classList.remove("success", "error");
 
   if (!dateValue) {
-    confirmation.innerText = "Seleziona prima la data perfetta 🗓️";
+    confirmation.innerText = "Seleziona prima la data.";
     confirmation.classList.add("error");
     return;
   }
@@ -43,53 +43,9 @@ function submitDate() {
     day: "numeric"
   });
 
-  confirmation.innerText = `Perfetto! Il ${formatted} è tuo: due biglietti VIP pronti per te e chi vuoi ⚽`;
+  confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
   confirmation.classList.add("success");
   launchConfetti(15);
-}
-
-function runSecretOverlay() {
-  if (!secretOverlay) {
-    showGiftSection();
-    return;
-  }
-
-  isRevealing = true;
-  secretOverlay.setAttribute("aria-hidden", "false");
-  requestAnimationFrame(() => secretOverlay.classList.add("visible"));
-}
-
-if (overlayContinue && secretOverlay) {
-  overlayContinue.addEventListener("click", () => {
-    if (!secretOverlay.classList.contains("visible")) return;
-    completeSecretOverlay();
-  });
-}
-
-function completeSecretOverlay() {
-  secretOverlay.classList.remove("visible");
-  setTimeout(() => {
-    secretOverlay.setAttribute("aria-hidden", "true");
-    showGiftSection();
-    isRevealing = false;
-  }, 350);
-}
-
-function showGiftSection() {
-  if (introSection) {
-    introSection.classList.add("hidden");
-  }
-  if (experienceBlock) {
-    experienceBlock.classList.remove("hidden");
-    requestAnimationFrame(() => experienceBlock.classList.add("revealed"));
-  }
-  giftSection.classList.remove("hidden");
-  requestAnimationFrame(() => giftSection.classList.add("revealed"));
-  launchConfetti();
-  playFanfare();
-  setTimeout(() => {
-    giftSection.scrollIntoView({ behavior: "smooth", block: "center" });
-  }, 400);
 }
 
 function launchConfetti(amount = 40) {

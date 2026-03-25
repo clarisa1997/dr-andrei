@@ -18,142 +18,67 @@
   <div class="glow glow-left"></div>
   <div class="glow glow-right"></div>
   <div id="confetti"></div>
-  <div id="secret-overlay" class="secret-overlay" aria-live="polite" aria-hidden="true">
-    <div class="secret-content">
-      <p class="eyebrow">Modalità scherzo</p>
-      <h3>Codice Allianz pronto da svelare</h3>
-      <p class="lead">
-        Premi continua per aprire il regalo e stop agli indizi fake.
-      </p>
-      <p class="secret-note">Spoiler: niente San Siro, solo Juve.</p>
-      <button id="overlay-continue" class="primary large">Fammi vedere</button>
-    </div>
-  </div>
 
   <main class="page">
-    <section id="intro" class="intro glass-card">
-      <p class="eyebrow">Graduation reveal</p>
-      <h1>Apri il tuo regalo segreto</h1>
-      <p class="lead">
-        Ci sono due biglietti VIP pronti col tuo nome: sblocca il regalo e decidi tu chi portare allo Stadium.
-      </p>
-      <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
+    <section id="view-intro" class="view active">
+      <div class="card intro">
+        <p class="eyebrow">Reveal</p>
+        <h1>Apri il regalo e scopri il piano</h1>
+        <p>
+          C'è una sorpresa di laurea blindata qui dentro. Premi il pulsante e ti mostro cosa ho organizzato per te.
+        </p>
+        <button class="primary" onclick="revealGift()">Apri</button>
+      </div>
     </section>
 
-    <div id="experience" class="experience hidden">
-      <header class="hero glass-card">
-        <div class="hero-text">
-          <span class="eyebrow">Per il neo dottore Andrei ✨</span>
-          <h1>Torino ti aspetta per un tour esclusivo all'Allianz Stadium</h1>
-          <p class="lead">
-            Dal campo al museo bianconero: vivi ogni corridoio e spogliatoio con due pass VIP da gestire come preferisci.
-          </p>
-          <ul class="highlights">
-            <li>Accesso backstage + museo ufficiale</li>
-            <li>Gift pack personalizzato il giorno del tour</li>
-            <li>Sessione foto sul manto verde</li>
-            <li>Due ticket per portare chi preferisci</li>
-          </ul>
-          <div class="actions">
-            <button class="primary" onclick="revealGift()">Scopri il regalo</button>
-            <button class="ghost" onclick="document.getElementById('date').scrollIntoView({ behavior: 'smooth' });">
-              Scegli la data
-            </button>
+    <section id="view-prank" class="view">
+      <div class="card prank-card">
+        <div class="prank-header">
+          <img src="assets/logo-milan.png" alt="Logo AC Milan" />
+          <div>
+            <p class="eyebrow red">Tour confermato</p>
+            <h2>San Siro Experience</h2>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="ticket">
-            <img src="assets/logo.png" alt="Logo Juventus" />
-            <div>
-              <span class="ticket-label">Esperienza</span>
-              <p class="ticket-title">Allianz Stadium Tour</p>
-              <p class="ticket-subtitle">+ Museo Juventus</p>
-            </div>
-            <span class="ticket-year">2024</span>
-          </div>
-          <div class="badge">Special Edition</div>
+        <p>
+          Accesso completo allo stadio rossonero: spogliatoi, bordo campo e museo del Milan. Biglietto dedicato al neo
+          dottore Andrei, valido per due persone.
+        </p>
+        <ul class="prank-list">
+          <li>Welcome kit ufficiale AC Milan</li>
+          <li>Pass VIP + guida dedicata</li>
+          <li>Foto sotto la Curva Sud</li>
+        </ul>
+        <div class="prank-actions">
+          <button class="secondary" onclick="unveilRealGift()">Conferma tour</button>
+          <span class="tiny-note">o puoi scoprire se c'è dell'altro…</span>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <section class="panel prank glass-card">
-        <div>
-          <p class="eyebrow">Mini troll</p>
-          <h2>San Siro? Macché.</h2>
-          <p>
-            I meme sull’Inter erano solo depistaggi: destinazione confermata, Allianz Stadium.
-          </p>
-          <div class="stadium-switch">
-            <span class="fake">San Siro</span>
-            <span class="arrow">⇢</span>
-            <span class="real">Allianz Stadium</span>
-          </div>
-        </div>
-        <div class="prank-ticket">
-          <img src="assets/logo-milan.png" alt="Logo AC Milan" class="prank-logo" />
-          <div class="prank-copy">
-            <p class="label">Ingresso VIP</p>
-            <p class="title">San Siro Tour</p>
-            <p class="note">*scherzo, si vola a Torino</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel discovery glass-card">
-        <div>
-          <p class="eyebrow">Preview</p>
-          <h2>Un percorso immersivo per celebrare la tua laurea</h2>
-          <p>
-            Dai tunnel dello stadio al museo interattivo: un viaggio tra trofei, cimeli e la passione bianconera. Ogni
-            momento è pensato per farti sentire protagonista assoluto.
-          </p>
-        </div>
-        <div class="timeline">
-          <div class="timeline-step">
-            <span>1</span>
-            <p>Benvenuto VIP &amp; accesso ai backstage.</p>
-          </div>
-          <div class="timeline-step">
-            <span>2</span>
-            <p>Tour guidato completo + museo interattivo.</p>
-          </div>
-          <div class="timeline-step">
-            <span>3</span>
-            <p>Celebration toast e foto in campo.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="panel surprise glass-card">
-        <div class="surprise-text">
-          <p class="eyebrow">Momento wow</p>
-          <h2>È il momento di svelare tutto</h2>
-          <p>Premi il pulsante e scopri cosa ti aspetta.</p>
-        </div>
-        <button class="primary large" onclick="revealGift()">Scopri il regalo</button>
-      </section>
-
-      <section id="gift" class="panel gift glass-card hidden">
+    <section id="view-gift" class="view">
+      <div class="card gift-card">
         <div class="gift-header">
-          <h2>🎉 Sorpresa! 🎉</h2>
-          <p class="lead">
-            Due biglietti VIP per il tour dello Juventus Stadium + ingresso museo. Scegli tu chi portare, il resto è già organizzato.
-          </p>
+          <img src="assets/logo.png" alt="Logo Juventus" />
+          <div>
+            <p class="eyebrow gold">Quello vero</p>
+            <h2>Allianz Stadium Tour + Museo</h2>
+          </div>
         </div>
-
+        <p>
+          Due biglietti VIP per visitare la casa della Juve quando vuoi tu. Scegli il partner di curva preferito e ci
+          pensiamo noi al resto.
+        </p>
         <div class="date-picker">
-          <label for="date">Segna quando vuoi andare e troverai tutto pronto:</label>
+          <label for="date">Scegli la data ideale:</label>
           <div class="date-actions">
             <input type="date" id="date" />
             <button class="primary" onclick="submitDate()">Conferma</button>
           </div>
           <p id="confirmation" class="confirmation"></p>
         </div>
-
-        <blockquote class="quote">
-          “Hai due posti. Il primo è tuo, il secondo lo decidi tu.”
-        </blockquote>
-      </section>
-    </div>
+      </div>
+    </section>
   </main>
 
   <script src="script.js"></script>
