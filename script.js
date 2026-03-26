@@ -73,7 +73,7 @@ function switchView(target) {
     section.classList.add("active");
   }
   if (target === "bridge") {
-    armClickWarning();
+    setTimeout(() => armClickWarning(), 120);
   } else {
     disarmClickWarning();
   }
