@@ -115,6 +115,7 @@ function submitDate() {
   confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
   confirmation.classList.add("success");
   launchHearts(20);
+  switchView("celebration");
 }
 
 function launchConfetti(amount = 40) {
