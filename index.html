@@ -21,6 +21,7 @@
   <div id="hearts"></div>
 
   <main class="page">
+    <div class="content">
     <section id="view-intro" class="view active">
       <div class="card intro">
         <p class="eyebrow">Facci sapere</p>
@@ -59,6 +60,10 @@
 
     <section id="view-bridge" class="view">
       <div class="card bridge-card">
+        <button class="help-icon" onclick="toggleHelp()" aria-label="Hint">?</button>
+        <div id="help-popover" class="help-popover hidden">
+          È una passione sportiva che condividi con tuo fratello ❤️🖤
+        </div>
         <p class="eyebrow alert">ATTENZIONE!!!!!!!</p>
         <h2>Sei stato selezionato per vincere un regalo BONUS scelto da noi</h2>
         <p>Per scoprire se hai vinto:</p>
@@ -117,6 +122,7 @@
         </div>
       </div>
     </section>
+    </div>
   </main>
 
   <script src="script.js"></script>

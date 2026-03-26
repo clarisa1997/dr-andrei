@@ -13,10 +13,12 @@ let audioCtx;
 let heartsUnlocked = false;
 let feedbackRating = null;
 let feedbackChoice = null;
+let clickWarningArmed = false;
 const ratingButtons = document.querySelectorAll(".rating-star");
 const feedbackError = document.getElementById("feedback-error");
 const feedbackRadios = document.querySelectorAll('input[name="feedback-choice"]');
 const clickWarning = document.getElementById("click-warning");
+const helpPopover = document.getElementById("help-popover");
 
 ratingButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -70,14 +72,19 @@ function switchView(target) {
   if (section) {
     section.classList.add("active");
   }
+  if (target === "bridge") {
+    armClickWarning();
+  } else {
+    disarmClickWarning();
+  }
 }
 
 function showPrank() {
   switchView("prank");
   launchConfetti(35);
-  if (clickWarning) {
-    clickWarning.classList.add("hidden");
-    document.removeEventListener("click", showClickWarning);
+  disarmClickWarning();
+  if (helpPopover) {
+    helpPopover.classList.add("hidden");
   }
 }
 
@@ -182,12 +189,31 @@ function playFanfare() {
 
 function showClickWarning(event) {
   const bridgeView = views.bridge;
-  if (!bridgeView || bridgeView.classList.contains("active") === false) return;
+  if (!bridgeView || !bridgeView.classList.contains("active") || !clickWarningArmed) return;
   const target = event.target;
-  if (bridgeView.contains(target) && target.closest(".bonus-cta")) return;
+  if (target.closest(".bonus-cta button") || target.closest(".help-icon")) return;
   if (clickWarning) {
     clickWarning.classList.remove("hidden");
   }
 }
 
 document.addEventListener("click", showClickWarning);
+
+function armClickWarning() {
+  clickWarningArmed = true;
+  if (clickWarning) {
+    clickWarning.classList.add("hidden");
+  }
+}
+
+function disarmClickWarning() {
+  clickWarningArmed = false;
+  if (clickWarning) {
+    clickWarning.classList.add("hidden");
+  }
+}
+
+function toggleHelp() {
+  if (!views.bridge || !views.bridge.classList.contains("active") || !helpPopover) return;
+  helpPopover.classList.toggle("hidden");
+}
