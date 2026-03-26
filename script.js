@@ -2,7 +2,8 @@ const views = {
   intro: document.getElementById("view-intro"),
   bridge: document.getElementById("view-bridge"),
   prank: document.getElementById("view-prank"),
-  gift: document.getElementById("view-gift")
+  gift: document.getElementById("view-gift"),
+  celebration: document.getElementById("view-celebration")
 };
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
