@@ -23,20 +23,45 @@
   <main class="page">
     <section id="view-intro" class="view active">
       <div class="card intro">
-        <p class="eyebrow">Feedback time</p>
-        <h1>Prima il tuo voto sul regalo scartato</h1>
+        <p class="eyebrow">Facci sapere</p>
+        <h1>Lasciaci una recensione sul regalo scartato</h1>
         <p class="instruction">
-          Dacci un rating sincero e racconta in due righe cosa ti ha convinto (o no) del regalo che hai appena aperto.
+          Dal 1 al 5, quanta vibe ti ha dato? E poi scegli una frase che riassuma la tua reazione. Promesso, lo leggiamo!
         </p>
         <div class="rating" role="radiogroup" aria-label="Valutazione regalo scartato">
-          <button class="rating-star" data-value="1" aria-label="1 stella">★</button>
-          <button class="rating-star" data-value="2" aria-label="2 stelle">★</button>
-          <button class="rating-star" data-value="3" aria-label="3 stelle">★</button>
-          <button class="rating-star" data-value="4" aria-label="4 stelle">★</button>
-          <button class="rating-star" data-value="5" aria-label="5 stelle">★</button>
+          <button class="rating-star" data-value="1" aria-label="1 stella">
+            <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.5l2.93 6.33 6.97.6-5.27 4.7 1.56 6.87L12 17.9 5.81 21l1.56-6.87-5.27-4.7 6.97-.6L12 2.5z" />
+            </svg>
+          </button>
+          <button class="rating-star" data-value="2" aria-label="2 stelle">
+            <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.5l2.93 6.33 6.97.6-5.27 4.7 1.56 6.87L12 17.9 5.81 21l1.56-6.87-5.27-4.7 6.97-.6L12 2.5z" />
+            </svg>
+          </button>
+          <button class="rating-star" data-value="3" aria-label="3 stelle">
+            <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.5l2.93 6.33 6.97.6-5.27 4.7 1.56 6.87L12 17.9 5.81 21l1.56-6.87-5.27-4.7 6.97-.6L12 2.5z" />
+            </svg>
+          </button>
+          <button class="rating-star" data-value="4" aria-label="4 stelle">
+            <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.5l2.93 6.33 6.97.6-5.27 4.7 1.56 6.87L12 17.9 5.81 21l1.56-6.87-5.27-4.7 6.97-.6L12 2.5z" />
+            </svg>
+          </button>
+          <button class="rating-star" data-value="5" aria-label="5 stelle">
+            <svg class="star-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.5l2.93 6.33 6.97.6-5.27 4.7 1.56 6.87L12 17.9 5.81 21l1.56-6.87-5.27-4.7 6.97-.6L12 2.5z" />
+            </svg>
+          </button>
         </div>
         <p class="question-label">
-          Seleziona una sola opzione che descrive meglio la tua reazione:
+          E adesso dicci con quale mood sei uscito dall'apertura:
         </p>
         <div class="quiz-options" role="radiogroup">
           <label class="feedback-option">
@@ -112,7 +137,7 @@
           pensiamo noi al resto.
         </p>
         <div class="date-picker">
-          <label for="date">Scegli la data ideale:</label>
+        <label for="date">Dimmi quando vuoi andare e blocchiamo tutto:</label>
           <div class="date-actions">
             <input type="date" id="date" />
             <button class="primary" onclick="submitDate()">Conferma</button>

@@ -149,16 +149,26 @@ body {
 .rating-star {
   background: none;
   border: none;
-  font-size: 2.4rem;
-  color: rgba(255, 255, 255, 0.35);
+  padding: 0;
+  line-height: 1;
   cursor: pointer;
-  transition: color 0.15s ease, transform 0.15s ease;
+  transition: transform 0.15s ease;
+}
+
+.star-icon {
+  width: 40px;
+  height: 40px;
+  fill: rgba(255, 255, 255, 0.25);
+  transition: fill 0.2s ease, filter 0.2s ease;
 }
 
 .rating-star.selected {
-  color: var(--accent);
-  text-shadow: 0 0 12px rgba(255, 236, 90, 0.6);
-  transform: scale(1.1);
+  transform: scale(1.08);
+}
+
+.rating-star.selected .star-icon {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 12px rgba(255, 236, 90, 0.6));
 }
 
 .question-label {

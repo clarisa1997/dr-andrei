@@ -19,21 +19,28 @@ const feedbackRadios = document.querySelectorAll('input[name="feedback-choice"]'
 
 ratingButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    feedbackRating = Number(button.dataset.value);
+    const value = Number(button.dataset.value);
+    feedbackRating = value;
     highlightStars(feedbackRating);
   });
+  button.addEventListener("mouseenter", () => highlightStars(Number(button.dataset.value)));
+  button.addEventListener("mouseleave", () => highlightStars(feedbackRating));
 });
 
 function highlightStars(value) {
   ratingButtons.forEach((star) => {
     const starValue = Number(star.dataset.value);
-    if (value && starValue <= value) {
-      star.classList.add("selected");
-    } else {
-      star.classList.remove("selected");
+    const isActive = value && starValue <= value;
+    star.classList.toggle("selected", Boolean(isActive));
+    star.setAttribute("aria-pressed", isActive ? "true" : "false");
+    const icon = star.querySelector(".star-icon");
+    if (icon) {
+      icon.setAttribute("data-active", isActive ? "true" : "false");
     }
   });
 }
+
+highlightStars(0);
 
 feedbackRadios.forEach((radio) => {
   radio.addEventListener("change", (event) => {
