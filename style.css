@@ -94,6 +94,7 @@ body {
 }
 
 .view {
+  display: none;
   width: 100%;
   transition: opacity 0.35s ease, transform 0.35s ease;
   opacity: 0;
@@ -103,6 +104,7 @@ body {
 }
 
 .view.active {
+  display: block;
   opacity: 1;
   transform: translateY(0);
 }
