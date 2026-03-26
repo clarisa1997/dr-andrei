@@ -164,6 +164,7 @@ function launchHearts(amount = 30) {
     heart.style.animationDelay = `${delay}s`;
     heartsContainer.appendChild(heart);
     setTimeout(() => heart.remove(), 3500 + delay * 1000);
+  }
 }
 
 function launchChemistryRain(amount = 20) {
