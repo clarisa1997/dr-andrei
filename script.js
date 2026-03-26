@@ -8,8 +8,10 @@ const views = {
 const confirmation = document.getElementById("confirmation");
 const confettiContainer = document.getElementById("confetti");
 const heartsContainer = document.getElementById("hearts");
+const celebrationRainContainer = document.getElementById("celebration-rain");
 const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
 const heartColors = ["#ffffff", "#000000"];
+const chemistryIcons = ["🧪", "🧫", "🎓"];
 let audioCtx;
 let heartsUnlocked = false;
 let feedbackRating = null;
@@ -68,7 +70,7 @@ function submitFeedback() {
 }
 
 function switchView(target) {
-  Object.values(views).forEach((view) => view.classList.remove("active"));
+  Object.values(views).forEach((view) => view && view.classList.remove("active"));
   const section = views[target];
   if (section) {
     section.classList.add("active");
@@ -133,6 +135,7 @@ function submitDate() {
     confirmation.classList.add("success");
   }
   launchHearts(20);
+  launchChemistryRain(25);
   switchView("celebration");
 }
 
@@ -161,6 +164,18 @@ function launchHearts(amount = 30) {
     heart.style.animationDelay = `${delay}s`;
     heartsContainer.appendChild(heart);
     setTimeout(() => heart.remove(), 3500 + delay * 1000);
+}
+
+function launchChemistryRain(amount = 20) {
+  if (!celebrationRainContainer) return;
+  for (let i = 0; i < amount; i++) {
+    const drop = document.createElement("span");
+    drop.textContent = chemistryIcons[Math.floor(Math.random() * chemistryIcons.length)];
+    drop.style.left = `${Math.random() * 100}%`;
+    const delay = Math.random() * 1.5;
+    drop.style.animationDelay = `${delay}s`;
+    celebrationRainContainer.appendChild(drop);
+    setTimeout(() => drop.remove(), 4500 + delay * 1000);
   }
 }
 
