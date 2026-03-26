@@ -91,7 +91,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: clamp(16px, 3vh, 34px);
-  min-height: calc(100vh - clamp(64px, 10vh, 140px));
 }
 
 .view {
