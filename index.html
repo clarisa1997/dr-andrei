@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Un regalo per te ⚽</title>
+  <title>Feedback regalo scartato ⚠️</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -28,21 +28,29 @@
         <p class="instruction">
           Dacci un rating sincero e racconta in due righe cosa ti ha convinto (o no) del regalo che hai appena aperto.
         </p>
-        <div class="rating">
-          <button class="rating-pill" data-value="0" aria-label="0 stelle">☆</button>
-          <button class="rating-pill" data-value="1" aria-label="1 stella">★</button>
-          <button class="rating-pill" data-value="2" aria-label="2 stelle">★★</button>
-          <button class="rating-pill" data-value="3" aria-label="3 stelle">★★★</button>
-          <button class="rating-pill" data-value="4" aria-label="4 stelle">★★★★</button>
-          <button class="rating-pill" data-value="5" aria-label="5 stelle">★★★★★</button>
+        <div class="rating" role="radiogroup" aria-label="Valutazione regalo scartato">
+          <button class="rating-star" data-value="1" aria-label="1 stella">★</button>
+          <button class="rating-star" data-value="2" aria-label="2 stelle">★</button>
+          <button class="rating-star" data-value="3" aria-label="3 stelle">★</button>
+          <button class="rating-star" data-value="4" aria-label="4 stelle">★</button>
+          <button class="rating-star" data-value="5" aria-label="5 stelle">★</button>
         </div>
         <p class="question-label">
-          Ti chiederei cortesemente di selezionare qui sotto l'opzione che descrive meglio come ti ha fatto sentire.
+          Seleziona una sola opzione che descrive meglio la tua reazione:
         </p>
-        <div class="quiz-options">
-          <button class="feedback-option" data-response="impazzire">Ho fatto e mi fa impazzire</button>
-          <button class="feedback-option" data-response="adorabile">Ho fatto e lo trovo adorabile</button>
-          <button class="feedback-option" data-response="indifferente">Ho fatto e devo dire mi è abbastanza indifferente</button>
+        <div class="quiz-options" role="radiogroup">
+          <label class="feedback-option">
+            <input type="radio" name="feedback-choice" value="impazzire" />
+            <span>Ho fatto e mi fa impazzire</span>
+          </label>
+          <label class="feedback-option">
+            <input type="radio" name="feedback-choice" value="adorabile" />
+            <span>Ho fatto e lo trovo adorabile</span>
+          </label>
+          <label class="feedback-option">
+            <input type="radio" name="feedback-choice" value="indifferente" />
+            <span>Ho fatto e devo dire mi è abbastanza indifferente</span>
+          </label>
         </div>
         <p id="feedback-error" class="feedback-error"></p>
         <button class="primary full" onclick="submitFeedback()">Invia feedback</button>

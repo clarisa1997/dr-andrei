@@ -13,23 +13,31 @@ let audioCtx;
 let heartsUnlocked = false;
 let feedbackRating = null;
 let feedbackChoice = null;
-const ratingButtons = document.querySelectorAll(".rating-pill");
+const ratingButtons = document.querySelectorAll(".rating-star");
 const feedbackError = document.getElementById("feedback-error");
-const feedbackOptions = document.querySelectorAll(".feedback-option");
+const feedbackRadios = document.querySelectorAll('input[name="feedback-choice"]');
 
 ratingButtons.forEach((button) => {
   button.addEventListener("click", () => {
     feedbackRating = Number(button.dataset.value);
-    ratingButtons.forEach((b) => b.classList.remove("selected"));
-    button.classList.add("selected");
+    highlightStars(feedbackRating);
   });
 });
 
-feedbackOptions.forEach((button) => {
-  button.addEventListener("click", () => {
-    feedbackChoice = button.dataset.response;
-    feedbackOptions.forEach((b) => b.classList.remove("selected"));
-    button.classList.add("selected");
+function highlightStars(value) {
+  ratingButtons.forEach((star) => {
+    const starValue = Number(star.dataset.value);
+    if (value && starValue <= value) {
+      star.classList.add("selected");
+    } else {
+      star.classList.remove("selected");
+    }
+  });
+}
+
+feedbackRadios.forEach((radio) => {
+  radio.addEventListener("change", (event) => {
+    feedbackChoice = event.target.value;
   });
 });
 
