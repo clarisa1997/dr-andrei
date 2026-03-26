@@ -148,26 +148,18 @@ body {
 .rating-star {
   background: none;
   border: none;
+  font-size: 2.4rem;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
   padding: 0;
   line-height: 1;
-  cursor: pointer;
-  transition: transform 0.15s ease;
-}
-
-.star-icon {
-  width: 40px;
-  height: 40px;
-  fill: rgba(255, 255, 255, 0.25);
-  transition: fill 0.2s ease, filter 0.2s ease;
+  transition: color 0.15s ease, transform 0.15s ease, text-shadow 0.15s ease;
 }
 
 .rating-star.selected {
-  transform: scale(1.08);
-}
-
-.rating-star.selected .star-icon {
-  fill: var(--accent);
-  filter: drop-shadow(0 0 12px rgba(255, 236, 90, 0.6));
+  color: var(--accent);
+  text-shadow: 0 0 12px rgba(255, 236, 90, 0.5);
+  transform: scale(1.05);
 }
 
 .question-label {
@@ -182,34 +174,30 @@ body {
 }
 
 .feedback-option {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: block;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: rgba(0, 0, 0, 0.35);
-  color: var(--text);
+  color: var(--muted);
   padding: 12px 16px;
   cursor: pointer;
   font-size: 0.95rem;
-  transition: border 0.2s ease, background 0.2s ease;
+  transition: border 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .feedback-option input {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--accent);
+  display: none;
 }
 
-.feedback-option input:checked + span {
-  color: #111;
-  font-weight: 600;
+.feedback-option span {
+  color: var(--text);
 }
 
-.feedback-option input:checked ~ span,
-.feedback-option:has(input:checked) {
+.feedback-option.selected {
   border-color: var(--accent);
   background: rgba(255, 255, 255, 0.15);
+  color: #111;
+  font-weight: 600;
 }
 
 .feedback-error {

@@ -33,10 +33,7 @@ function highlightStars(value) {
     const isActive = value && starValue <= value;
     star.classList.toggle("selected", Boolean(isActive));
     star.setAttribute("aria-pressed", isActive ? "true" : "false");
-    const icon = star.querySelector(".star-icon");
-    if (icon) {
-      icon.setAttribute("data-active", isActive ? "true" : "false");
-    }
+    star.textContent = isActive ? "★" : "☆";
   });
 }
 
@@ -45,6 +42,11 @@ highlightStars(0);
 feedbackRadios.forEach((radio) => {
   radio.addEventListener("change", (event) => {
     feedbackChoice = event.target.value;
+    document.querySelectorAll(".feedback-option").forEach((option) =>
+      option.classList.remove("selected")
+    );
+    const option = event.target.closest(".feedback-option");
+    if (option) option.classList.add("selected");
   });
 });
 
