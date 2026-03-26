@@ -1,14 +1,15 @@
 :root {
-  --bg: #010108;
+  --bg: #00000a;
   --card: rgba(6, 6, 12, 0.95);
   --border: rgba(255, 255, 255, 0.14);
   --text: #f5f5f5;
   --muted: rgba(245, 245, 245, 0.7);
-  --accent: #f7c945;
+  --accent: #ffec5a;
   --accent-milan: #ff4d4d;
-  --accent-juve: #ffe28b;
+  --accent-juve: #ffffff;
   --milan-grad: linear-gradient(135deg, rgba(255, 0, 0, 0.25), rgba(10, 10, 10, 0.95));
-  --juve-grad: linear-gradient(135deg, rgba(255, 229, 146, 0.25), rgba(8, 8, 8, 0.95));
+  --juve-grad: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(8, 8, 8, 0.95));
+  --scam-grad: linear-gradient(135deg, rgba(255, 231, 92, 0.3), rgba(0, 0, 0, 0.95));
   font-family: 'Space Grotesk', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -29,10 +30,10 @@ body {
 .background {
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.07), transparent 55%),
-    radial-gradient(circle at 80% 5%, rgba(255, 0, 0, 0.15), transparent 45%),
-    radial-gradient(circle at 70% 80%, rgba(247, 201, 69, 0.15), transparent 55%),
-    linear-gradient(135deg, #010101, #06060c 55%, #101020);
+  background: radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.08), transparent 55%),
+    radial-gradient(circle at 80% 5%, rgba(255, 120, 0, 0.25), transparent 45%),
+    radial-gradient(circle at 70% 80%, rgba(255, 253, 149, 0.2), transparent 55%),
+    linear-gradient(135deg, #02020d, #050514 55%, #0e1a27);
   z-index: -3;
 }
 
@@ -47,13 +48,13 @@ body {
 }
 
 .glow-left {
-  background: #ffcf6b;
+  background: #ffeb6e;
   top: 12%;
   left: 6%;
 }
 
 .glow-right {
-  background: #ff4d4d;
+  background: #ff7f50;
   bottom: 10%;
   right: 12%;
 }
@@ -118,6 +119,12 @@ body {
   opacity: 0.2;
 }
 
+.intro {
+  background: var(--scam-grad);
+  border-color: rgba(255, 236, 90, 0.4);
+  box-shadow: 0 30px 60px rgba(255, 236, 90, 0.25);
+}
+
 .intro h1 {
   margin: 0;
   font-size: clamp(2rem, 4vw, 2.7rem);
@@ -142,12 +149,13 @@ body {
 .rating-pill {
   flex: 1;
   min-width: 60px;
-  border-radius: 999px;
-  padding: 12px;
+  border-radius: 16px;
+  padding: 10px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text);
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s ease, border 0.2s ease, transform 0.2s ease;
 }
@@ -164,20 +172,29 @@ body {
   color: var(--muted);
 }
 
-textarea {
-  width: 100%;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
-  padding: 14px;
-  font-family: inherit;
-  font-size: 1rem;
-  resize: vertical;
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-textarea:focus {
-  outline: 2px solid var(--accent);
+.feedback-option {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.3);
+  color: var(--text);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+
+.feedback-option.selected {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+  color: #111;
+  transform: translateY(-2px);
 }
 
 .feedback-error {
@@ -192,11 +209,34 @@ textarea:focus {
 
 .bridge-card h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 2.15rem;
+  color: #fff;
 }
 
-.eyebrow.alert {
-  color: #ff5f5f;
+.bridge-card {
+  background: linear-gradient(135deg, #ffec5a, #ff695c);
+  border-color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  gap: 18px;
+  color: #111;
+}
+
+.bridge-card .eyebrow.alert {
+  color: #8b0505;
+  font-size: 0.85rem;
+  letter-spacing: 0.25em;
+}
+
+.bridge-card button {
+  background: linear-gradient(120deg, #111, #ffec5a);
+  color: #ffec5a;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+}
+
+.bridge-card p {
+  margin: 0;
+  color: rgba(17, 17, 17, 0.8);
 }
 
 .prank-card {

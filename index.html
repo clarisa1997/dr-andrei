@@ -29,15 +29,21 @@
           Dacci un rating sincero e racconta in due righe cosa ti ha convinto (o no) del regalo che hai appena aperto.
         </p>
         <div class="rating">
-          <button class="rating-pill" data-value="0">0</button>
-          <button class="rating-pill" data-value="1">1</button>
-          <button class="rating-pill" data-value="2">2</button>
-          <button class="rating-pill" data-value="3">3</button>
-          <button class="rating-pill" data-value="4">4</button>
-          <button class="rating-pill" data-value="5">5</button>
+          <button class="rating-pill" data-value="0" aria-label="0 stelle">☆</button>
+          <button class="rating-pill" data-value="1" aria-label="1 stella">★</button>
+          <button class="rating-pill" data-value="2" aria-label="2 stelle">★★</button>
+          <button class="rating-pill" data-value="3" aria-label="3 stelle">★★★</button>
+          <button class="rating-pill" data-value="4" aria-label="4 stelle">★★★★</button>
+          <button class="rating-pill" data-value="5" aria-label="5 stelle">★★★★★</button>
         </div>
-        <label for="feedback-text" class="question-label">Che impressione ti ha fatto?</label>
-        <textarea id="feedback-text" rows="4" placeholder="Scrivi qui la tua risposta..."></textarea>
+        <p class="question-label">
+          Ti chiederei cortesemente di selezionare qui sotto l'opzione che descrive meglio come ti ha fatto sentire.
+        </p>
+        <div class="quiz-options">
+          <button class="feedback-option" data-response="impazzire">Ho fatto e mi fa impazzire</button>
+          <button class="feedback-option" data-response="adorabile">Ho fatto e lo trovo adorabile</button>
+          <button class="feedback-option" data-response="indifferente">Ho fatto e devo dire mi è abbastanza indifferente</button>
+        </div>
         <p id="feedback-error" class="feedback-error"></p>
         <button class="primary full" onclick="submitFeedback()">Invia feedback</button>
       </div>
@@ -56,7 +62,6 @@
           protagonista assoluto della laurea.
         </p>
         <button class="primary" onclick="showPrank()">CLICCA QUI per scoprire di che si tratta</button>
-      </div>
       </div>
     </section>
 

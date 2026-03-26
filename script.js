@@ -12,9 +12,10 @@ const heartColors = ["#ffffff", "#000000"];
 let audioCtx;
 let heartsUnlocked = false;
 let feedbackRating = null;
+let feedbackChoice = null;
 const ratingButtons = document.querySelectorAll(".rating-pill");
-const feedbackInput = document.getElementById("feedback-text");
 const feedbackError = document.getElementById("feedback-error");
+const feedbackOptions = document.querySelectorAll(".feedback-option");
 
 ratingButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -24,11 +25,18 @@ ratingButtons.forEach((button) => {
   });
 });
 
+feedbackOptions.forEach((button) => {
+  button.addEventListener("click", () => {
+    feedbackChoice = button.dataset.response;
+    feedbackOptions.forEach((b) => b.classList.remove("selected"));
+    button.classList.add("selected");
+  });
+});
+
 function submitFeedback() {
-  const text = feedbackInput ? feedbackInput.value.trim() : "";
-  if (feedbackRating === null || !text) {
+  if (feedbackRating === null || !feedbackChoice) {
     if (feedbackError) {
-      feedbackError.innerText = "Ehi ehi ehi, ti sei dimenticato qualcosa: voto e commento prima di proseguire.";
+      feedbackError.innerText = "Ehi ehi ehi, ti sei dimenticato qualcosa: voto e risposta prima di proseguire.";
     }
     return;
   }
