@@ -98,11 +98,26 @@ function unveilRealGift() {
 
 function submitDate() {
   const dateValue = document.getElementById("date").value;
-  confirmation.classList.remove("success", "error");
+  if (confirmation) {
+    confirmation.classList.remove("success", "error");
+  }
 
   if (!dateValue) {
-    confirmation.innerText = "Seleziona prima la data.";
-    confirmation.classList.add("error");
+    if (confirmation) {
+      confirmation.innerText = "Seleziona prima la data.";
+      confirmation.classList.add("error");
+    }
+    return;
+  }
+
+  const selectedDate = new Date(dateValue);
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  if (selectedDate < today) {
+    if (confirmation) {
+      confirmation.innerText = "Pagliaccio, scegli una data a modo! 🤡";
+      confirmation.classList.add("error");
+    }
     return;
   }
 
@@ -113,8 +128,10 @@ function submitDate() {
     day: "numeric"
   });
 
-  confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
-  confirmation.classList.add("success");
+  if (confirmation) {
+    confirmation.innerText = `Perfetto: blocco il ${formatted} per te e il tuo ospite.`;
+    confirmation.classList.add("success");
+  }
   launchHearts(20);
   switchView("celebration");
 }
