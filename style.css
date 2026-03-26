@@ -78,14 +78,12 @@ body {
 .page {
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 0;
+  padding: clamp(40px, 5vh, 80px) 0 clamp(60px, 7vh, 100px);
 }
 
 .view {
-  width: min(520px, 90vw);
+  width: min(520px, 94vw);
+  margin: 0 auto clamp(20px, 4vh, 40px);
   transition: opacity 0.4s ease, transform 0.4s ease;
   opacity: 0;
   transform: translateY(20px);
@@ -472,10 +470,14 @@ button:hover {
 
 @media (max-width: 640px) {
   .page {
-    padding: 20px 0 40px;
+    padding: clamp(20px, 4vh, 50px) 0 clamp(30px, 5vh, 70px);
+  }
+  .view {
+    width: 94vw;
+    margin-bottom: clamp(16px, 3vh, 32px);
   }
   .card {
-    padding: 28px;
+    padding: clamp(22px, 4vw, 28px);
   }
   .prank-header,
   .gift-header {
