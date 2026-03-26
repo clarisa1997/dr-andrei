@@ -11,12 +11,13 @@ const heartsContainer = document.getElementById("hearts");
 const celebrationRainContainer = document.getElementById("celebration-rain");
 const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
 const heartColors = ["#ffffff", "#000000"];
-const chemistryIcons = ["🧪", "🧫", "🎓"];
+const chemistryIcons = ["🧪", "🧫", "🎓", "🎓"];
 let audioCtx;
-let heartsUnlocked = false;
 let feedbackRating = null;
 let feedbackChoice = null;
 let clickWarningArmed = false;
+let heartsClickable = false;
+let celebrationRainInterval = null;
 const ratingButtons = document.querySelectorAll(".rating-star");
 const feedbackError = document.getElementById("feedback-error");
 const feedbackRadios = document.querySelectorAll('input[name="feedback-choice"]');
@@ -80,6 +81,12 @@ function switchView(target) {
   } else {
     disarmClickWarning();
   }
+  heartsClickable = target === "gift" || target === "celebration";
+  if (target === "celebration") {
+    startCelebrationRain();
+  } else {
+    stopCelebrationRain();
+  }
 }
 
 function showPrank() {
@@ -93,12 +100,11 @@ function showPrank() {
 
 function unveilRealGift() {
   switchView("gift");
-  heartsUnlocked = true;
   launchHearts(40);
   playFanfare();
 }
 
-function submitDate() {
+function submitDate(event) {
   const dateValue = document.getElementById("date").value;
   if (confirmation) {
     confirmation.classList.remove("success", "error");
@@ -180,12 +186,6 @@ function launchChemistryRain(amount = 20) {
   }
 }
 
-document.addEventListener("click", () => {
-  if (heartsUnlocked) {
-    launchHearts(8);
-  }
-});
-
 function ensureAudioContext() {
   if (!audioCtx) {
     audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -222,6 +222,27 @@ function playFanfare() {
   });
 }
 
+function handleGlobalClick(event) {
+  handleHeartsClick(event);
+  showClickWarning(event);
+}
+
+document.addEventListener("click", handleGlobalClick);
+
+function handleHeartsClick(event) {
+  if (!heartsClickable) return;
+  if (
+    event.target.closest(".date-picker") ||
+    event.target.closest(".bonus-cta") ||
+    event.target.closest(".help-icon") ||
+    event.target.closest(".rating") ||
+    event.target.closest(".quiz-options")
+  ) {
+    return;
+  }
+  launchHearts(10);
+}
+
 function showClickWarning(event) {
   const bridgeView = views.bridge;
   if (!bridgeView || !bridgeView.classList.contains("active") || !clickWarningArmed) return;
@@ -231,8 +252,6 @@ function showClickWarning(event) {
     clickWarning.classList.remove("hidden");
   }
 }
-
-document.addEventListener("click", showClickWarning);
 
 function armClickWarning() {
   clickWarningArmed = true;
@@ -251,4 +270,20 @@ function disarmClickWarning() {
 function toggleHelp() {
   if (!views.bridge || !views.bridge.classList.contains("active") || !helpPopover) return;
   helpPopover.classList.toggle("hidden");
+}
+
+function startCelebrationRain() {
+  launchChemistryRain(25);
+  if (celebrationRainInterval) clearInterval(celebrationRainInterval);
+  celebrationRainInterval = setInterval(() => launchChemistryRain(15), 1800);
+}
+
+function stopCelebrationRain() {
+  if (celebrationRainInterval) {
+    clearInterval(celebrationRainInterval);
+    celebrationRainInterval = null;
+  }
+  if (celebrationRainContainer) {
+    celebrationRainContainer.innerHTML = "";
+  }
 }
