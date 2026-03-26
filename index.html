@@ -23,30 +23,40 @@
   <main class="page">
     <section id="view-intro" class="view active">
       <div class="card intro">
-        <p class="eyebrow">Reveal</p>
-        <h1>Apri il regalo e scopri il piano</h1>
+        <p class="eyebrow">Feedback time</p>
+        <h1>Prima il tuo voto sul regalo scartato</h1>
         <p class="instruction">
-          Ti chiederei cortesemente di aprire il regalo che ti si prospetta davanti e poi premere uno dei bottoni qui
-          sotto per farmi sapere come ti fa sentire.
+          Dacci un rating sincero e racconta in due righe cosa ti ha convinto (o no) del regalo che hai appena aperto.
         </p>
-        <div class="reaction-buttons">
-          <button class="primary" onclick="revealGift()">Ho fatto e mi fa impazzire</button>
-          <button class="primary" onclick="revealGift()">Ho fatto e lo trovo adorabile</button>
-          <button class="primary" onclick="revealGift()">Ho fatto e devo dire mi è abbastanza indifferente</button>
+        <div class="rating">
+          <button class="rating-pill" data-value="0">0</button>
+          <button class="rating-pill" data-value="1">1</button>
+          <button class="rating-pill" data-value="2">2</button>
+          <button class="rating-pill" data-value="3">3</button>
+          <button class="rating-pill" data-value="4">4</button>
+          <button class="rating-pill" data-value="5">5</button>
         </div>
+        <label for="feedback-text" class="question-label">Che impressione ti ha fatto?</label>
+        <textarea id="feedback-text" rows="4" placeholder="Scrivi qui la tua risposta..."></textarea>
+        <p id="feedback-error" class="feedback-error"></p>
+        <button class="primary full" onclick="submitFeedback()">Invia feedback</button>
       </div>
     </section>
 
     <section id="view-bridge" class="view">
       <div class="card bridge-card">
-        <p class="eyebrow">Cambio di programma</p>
-        <h2>Ok, cambiamo argomento: la Formula 1 non c'entra niente.</h2>
+        <p class="eyebrow alert">ATTENZIONE</p>
+        <h2>Sei stato selezionato!</h2>
         <p>
-          Come sanno tutti qui, hai un'altra passione irrefrenabile, uno sport che condividi con tuo fratello piccolo e
-          che vi ha sempre legati. Tranquillo, non ce lo siamo dimenticati.
+          Complimenti, il tuo feedback è entrato nella shortlist dei “fortunati tra un milione” che possono sbloccare un
+          regalo ulteriore. Non è uno scherzo (forse).
         </p>
-        <p>Quando sei pronto, clicca qui sotto per vedere il vero protagonista di questa laurea.</p>
-        <button class="primary" onclick="showPrank()">Mostra il regalo</button>
+        <p>
+          Premi qui sotto per vedere l’offerta esclusiva che ti abbiamo riservato. Affrettati: stai per diventare il
+          protagonista assoluto della laurea.
+        </p>
+        <button class="primary" onclick="showPrank()">CLICCA QUI per scoprire di che si tratta</button>
+      </div>
       </div>
     </section>
 

@@ -11,6 +11,32 @@ const confettiColors = ["#f9d265", "#ff3b3b", "#ffffff", "#d1ecff"];
 const heartColors = ["#ffffff", "#000000"];
 let audioCtx;
 let heartsUnlocked = false;
+let feedbackRating = null;
+const ratingButtons = document.querySelectorAll(".rating-pill");
+const feedbackInput = document.getElementById("feedback-text");
+const feedbackError = document.getElementById("feedback-error");
+
+ratingButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    feedbackRating = Number(button.dataset.value);
+    ratingButtons.forEach((b) => b.classList.remove("selected"));
+    button.classList.add("selected");
+  });
+});
+
+function submitFeedback() {
+  const text = feedbackInput ? feedbackInput.value.trim() : "";
+  if (feedbackRating === null || !text) {
+    if (feedbackError) {
+      feedbackError.innerText = "Ehi ehi ehi, ti sei dimenticato qualcosa: voto e commento prima di proseguire.";
+    }
+    return;
+  }
+  if (feedbackError) {
+    feedbackError.innerText = "";
+  }
+  switchView("bridge");
+}
 
 function switchView(target) {
   Object.values(views).forEach((view) => view.classList.remove("active"));
@@ -18,10 +44,6 @@ function switchView(target) {
   if (section) {
     section.classList.add("active");
   }
-}
-
-function revealGift() {
-  switchView("bridge");
 }
 
 function showPrank() {
