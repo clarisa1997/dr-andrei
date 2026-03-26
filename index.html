@@ -59,10 +59,13 @@
 
     <section id="view-bridge" class="view">
       <div class="card bridge-card">
-        <p class="eyebrow alert">ATTENZIONE</p>
-        <h2>Sei stato selezionato!</h2>
-        <p>Hai sbloccato una FASE BONUS riservata a pochissimi. Vuoi vedere cosa stiamo per darti sul serio?</p>
-        <button class="primary" onclick="showPrank()">CLICCA QUI e non dirlo a nessuno</button>
+        <p class="eyebrow alert">ATTENZIONE!!!!!!!</p>
+        <h2>Sei stato selezionato per vincere un regalo BONUS scelto da noi</h2>
+        <p>Per scoprire se hai vinto:</p>
+        <div class="bonus-cta">
+          <button class="primary" onclick="showPrank()">CLICCA QUI</button>
+          <span id="click-warning" class="click-warning hidden">HO DETTO CLICCA QUI</span>
+        </div>
       </div>
     </section>
 

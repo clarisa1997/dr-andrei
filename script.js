@@ -16,6 +16,7 @@ let feedbackChoice = null;
 const ratingButtons = document.querySelectorAll(".rating-star");
 const feedbackError = document.getElementById("feedback-error");
 const feedbackRadios = document.querySelectorAll('input[name="feedback-choice"]');
+const clickWarning = document.getElementById("click-warning");
 
 ratingButtons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -74,6 +75,10 @@ function switchView(target) {
 function showPrank() {
   switchView("prank");
   launchConfetti(35);
+  if (clickWarning) {
+    clickWarning.classList.add("hidden");
+    document.removeEventListener("click", showClickWarning);
+  }
 }
 
 function unveilRealGift() {
@@ -174,3 +179,15 @@ function playFanfare() {
     time += duration * 0.7;
   });
 }
+
+function showClickWarning(event) {
+  const bridgeView = views.bridge;
+  if (!bridgeView || bridgeView.classList.contains("active") === false) return;
+  const target = event.target;
+  if (bridgeView.contains(target) && target.closest(".bonus-cta")) return;
+  if (clickWarning) {
+    clickWarning.classList.remove("hidden");
+  }
+}
+
+document.addEventListener("click", showClickWarning);

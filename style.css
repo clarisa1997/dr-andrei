@@ -492,3 +492,14 @@ button:hover {
     width: 100%;
   }
 }
+.bonus-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.click-warning {
+  color: #ff5f5f;
+  font-weight: 700;
+}
