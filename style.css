@@ -78,15 +78,17 @@ body {
 .page {
   width: 100%;
   min-height: 100vh;
-  padding: 60px 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
 }
 
 .view {
-  width: min(540px, 92vw);
-  margin: 0 auto;
+  width: min(520px, 90vw);
   transition: opacity 0.4s ease, transform 0.4s ease;
   opacity: 0;
-  transform: translateY(25px);
+  transform: translateY(20px);
   pointer-events: none;
 }
 
@@ -100,11 +102,11 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 30px;
-  padding: 38px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+  padding: 32px;
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   position: relative;
   overflow: hidden;
 }
@@ -116,12 +118,6 @@ body {
   pointer-events: none;
   background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 60%);
   opacity: 0.2;
-}
-
-.intro {
-  background: var(--scam-grad);
-  border-color: rgba(255, 236, 90, 0.4);
-  box-shadow: 0 30px 60px rgba(255, 236, 90, 0.25);
 }
 
 .intro h1 {
@@ -217,29 +213,35 @@ body {
 }
 
 .bridge-card {
-  background: linear-gradient(135deg, #ffec5a, #ff695c);
-  border-color: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, rgba(130, 75, 255, 0.35), rgba(22, 8, 32, 0.95));
+  border: 1px solid rgba(190, 141, 255, 0.6);
   text-align: center;
-  gap: 18px;
-  color: #111;
+  gap: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
 }
 
 .bridge-card .eyebrow.alert {
-  color: #8b0505;
-  font-size: 0.85rem;
-  letter-spacing: 0.25em;
+  color: #ff80f8;
+  font-size: 0.95rem;
+  letter-spacing: 0.4em;
 }
 
-.bridge-card button {
-  background: linear-gradient(120deg, #111, #ffec5a);
-  color: #ffec5a;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+.bridge-card h2 {
+  font-size: 2.1rem;
+  margin: 0;
+  color: #fff;
 }
 
 .bridge-card p {
   margin: 0;
-  color: rgba(17, 17, 17, 0.8);
+  color: rgba(255, 233, 255, 0.88);
+}
+
+.bridge-card button {
+  background: linear-gradient(120deg, #ff80f8, #7cf4ff);
+  color: #111;
+  border: none;
+  box-shadow: 0 18px 35px rgba(124, 244, 255, 0.45);
 }
 
 .prank-card {
@@ -470,10 +472,10 @@ button:hover {
 
 @media (max-width: 640px) {
   .page {
-    padding: 40px 0 80px;
+    padding: 20px 0 40px;
   }
   .card {
-    padding: 30px;
+    padding: 28px;
   }
   .prank-header,
   .gift-header {
